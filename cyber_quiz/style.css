@@ -1,0 +1,234 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f4f7f6; /* Warna teks global cerah */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    /* --- LATAR BELAKANG GELAP (sesuaikan gambar) --- */
+    background-image: url('images/dark_hacker_bg.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+    background-color: #1a1a2e; 
+}
+
+header, footer {
+    width: 100%;
+    background-color: rgba(0, 123, 255, 0.9); 
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+main {
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    flex-grow: 1;
+}
+
+/* Kontainer Utama Kuis (untuk kontras yang baik) */
+#quiz-container, #question-navigator, #results {
+    background: rgba(255, 255, 255, 0.95); 
+    color: #333; 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #0056b3;
+}
+
+.question-image { 
+    max-width: 100%; 
+    height: auto;
+    margin: 15px auto; 
+    display: block;
+    border: 3px solid #007bff;
+    border-radius: 6px;
+}
+
+.option {
+    background-color: #f0f0f0;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 1px solid #ced4da;
+}
+
+.option:hover {
+    background-color: #e2e6ea;
+}
+
+/* Status Jawaban */
+.option.selected {
+    border-color: #007bff;
+    background-color: #cce5ff;
+}
+.option.correct {
+    background-color: #d4edda; /* Hijau Muda */
+    border-color: #28a745;
+    font-weight: bold;
+}
+.option.incorrect {
+    background-color: #f8d7da; /* Merah Muda */
+    border-color: #dc3545;
+}
+
+.explanation {
+    margin-top: 15px;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+}
+
+/* Navigasi */
+#main-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+/* Navigasi Cepat Soal */
+#question-navigator {
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#nav-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.nav-button {
+    background-color: #f8f9fa;
+    color: #007bff;
+    border: 1px solid #ced4da;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 40px;
+}
+
+.nav-button.current {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Gaya Hasil Kuis BARU (Kalkulator & Diagram) --- */
+
+#score-details {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #cce5ff;
+    border-radius: 6px;
+    background-color: #f0f8ff;
+    text-align: center;
+}
+
+#score-details h3 {
+    color: #007bff;
+    margin-bottom: 5px;
+    font-size: 1.8em;
+}
+
+/* CSS Pie Chart (Menggunakan Conic Gradient) */
+#chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.pie-chart {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    /* Menggunakan variabel CSS untuk persentase jawaban benar (diatur oleh JS) */
+    background: conic-gradient(
+        #28a745 0 var(--correct-percent), 
+        #dc3545 var(--correct-percent) 100%
+    );
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.pie-chart-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #007bff;
+    line-height: 1.2;
+}
+
+.legend {
+    margin-left: 30px;
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.legend li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}

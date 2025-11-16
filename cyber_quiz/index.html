@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ CYBER SECURITY </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🔐 Kuis Keamanan Siber</h1>
+        <p>Uji pengetahuan Anda tentang Keamanan Siber.</p>
+    </header>
+
+    <main>
+        <div id="question-navigator">
+            <h4>Pilih Soal:</h4>
+            <div id="nav-buttons-container">
+                </div>
+        </div>
+        
+        <div id="quiz-container">
+            </div>
+
+        <div id="main-nav-buttons">
+            <button id="prev-button" onclick="goToQuestion(currentQuestionIndex - 1)" disabled>← Soal Sebelumnya</button>
+            <button id="next-button-main" onclick="goToQuestion(currentQuestionIndex + 1)" disabled>Soal Selanjutnya →</button>
+        </div>
+        
+        <div id="results" class="hidden">
+            <h2>🎉 Hasil Kuis Anda</h2>
+            
+            <div id="score-details">
+                </div>
+            
+            <div id="chart-container">
+                </div>
+
+            <p style="text-align: center;">Tinjau kembali jawaban yang salah di bawah ini (jika ada) atau coba lagi.</p>
+            
+            <button onclick="location.reload()">Mulai Lagi</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ronestora</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
